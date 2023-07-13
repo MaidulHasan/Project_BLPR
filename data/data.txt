@@ -1,0 +1,15 @@
+Project_BLPR/data/ 
+
+	-> ./lp_bb_v4_yoloV8/    	: gdrive - https://drive.google.com/drive/folders/1-ZtJbyvYAHzIa8V3VJBrK0jHDffNPCPD?usp=drive_link
+			    	   	  roboflow - https://universe.roboflow.com/blpr/lp_bb_detection
+			    	   	  purpose - Dataset for License Plate Bounding Box Detection.
+			    
+	-> ./blp_text_v1_yoloV8/	: gdrive - https://drive.google.com/drive/folders/1eps8t8CuWW2MbX5eRD4w4auhbafLC_xe?usp=drive_link
+			       	 	  roboflow - https://universe.roboflow.com/blpr/lp_characters
+			       	 	  purpose - Dataset for Bangla License Plate Character Recognition
+			       
+	-> ./blpr_test_inference_1/  	: gdrive - https://drive.google.com/drive/folders/1uiBJBKdHxm1FCzhunSDGIQ2-anuktwTF?usp=drive_link
+					  purpose - Dataset for testing the performance of the developed BLPR system
+
+	-> ./blpr_test_inference_2/	: gdrive - https://drive.google.com/drive/folders/1Sy9eE4ZiH5ztTGVhF3Vnny4BmZgZE6OZ?usp=drive_link
+					  purpose - Dataset for testing the performance of the developed BLPR system
