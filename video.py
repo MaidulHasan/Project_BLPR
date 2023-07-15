@@ -44,10 +44,13 @@ def blpr_video(source_path, save_path=f"{HOME}/inferences"):
         ret, frame = capture.read()
 
         if ret is False and save_detection_to:
-            return f"Detections saved to {save_detection_to}. Exiting..."
+            return (
+                save_detection_to,
+                f"Detections saved to {save_detection_to}. Exiting...",
+            )
 
         if ret is False:
-            return "Could not read any frame. Stream may have ended. Exiting..."
+            return (None, "Could not read any frame. Stream may have ended. Exiting...")
 
         blur_frame = cv.GaussianBlur(frame, (5, 5), 0)
         car_text = blp_text_extraction_pipeline(blur_frame)
@@ -70,7 +73,7 @@ def blpr_video(source_path, save_path=f"{HOME}/inferences"):
         # writing to detection.mp4
         out.write(frame)
 
-        return save_detection_to
+        return (save_detection_to, "Completed Successfully. Exiting...")
 
     capture.release()
     out.release()
