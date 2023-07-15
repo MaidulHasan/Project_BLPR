@@ -17,35 +17,34 @@ os.chdir(HOME)
 
 
 # ---------------------------------
-### blpr pipeline for images
+### blpr pipeline for pre-recorded video inputs
 # ---------------------------------
-def blpr_video(source_path, save_path="{HOME}/inferences", show_detection=False):
+def blpr_video(source_path, save_path=f"{HOME}/inferences"):
     """
     source_path: pass the full path along with the file extension
-    save_path: folder to which the detection is to be saved, by default saved to "./Project_BLPR/inferences/" with name = "{source_file_name} - detections.avi"
-    show_detection: by default False. If True then will show the detection frame by frame as it happens. Caution - might be very slow
+    save_path: folder to which the detection is to be saved, by default saved to "./Project_BLPR/inferences/" with name = "blpr_video_detections-{source_file_name}.mp4"
 
     Returns: saved file location
     """
-    capture = cv.VideoCapture()
+    capture = cv.VideoCapture(source_path)
     if capture.isOpened() is not True:
         capture.open()
 
-    cv.set(cv.CAP_PROP_FRAME_WIDTH, 640)
-    cv.set(cv.CAP_PROP_FRAME_HEIGHT, 640)
+    frame_width = int(capture.get(cv.CAP_PROP_FRAME_WIDTH))
+    frame_height = int(capture.get(cv.CAP_PROP_FRAME_HEIGHT))
 
     source_file_name = os.path.splitext(os.path.basename(f"{source_path}"))[0]
-    save_detections_to = f"{save_path}/{source_file_name} - detections.avi"
+    save_detection_to = f"{save_path}/blpr_video_detections-{source_file_name}.mp4"
 
     # Define the codec and create VideoWriter object
-    fourcc = cv.VideoWriter_fourcc(*"XVID")
-    out = cv.VideoWriter(save_detections_to, fourcc, 20.0, (640, 640))
+    fourcc = cv.VideoWriter_fourcc(*"mp4v")
+    out = cv.VideoWriter(save_detection_to, fourcc, 20.0, (frame_width, frame_height))
 
     while True:
         ret, frame = capture.read()
 
-        if ret is False and save_detections_to:
-            return f"Detections saved to {save_detections_to}. Exiting..."
+        if ret is False and save_detection_to:
+            return f"Detections saved to {save_detection_to}. Exiting..."
 
         if ret is False:
             return "Could not read any frame. Stream may have ended. Exiting..."
@@ -54,7 +53,7 @@ def blpr_video(source_path, save_path="{HOME}/inferences", show_detection=False)
         car_text = blp_text_extraction_pipeline(blur_frame)
 
         if car_text is None or car_text.strip() == "":
-            car_text = "Sorry, Couldn't detect any number plate text."
+            car_text = ""
 
         ### save detection
         # drawing 'text' over the original frame
@@ -63,22 +62,16 @@ def blpr_video(source_path, save_path="{HOME}/inferences", show_detection=False)
             car_text,
             (20, 110),
             cv.FONT_ITALIC,
-            fontScale=3,
+            fontScale=2,
             color=(0, 0, 255),
-            thickness=3,
+            thickness=2,
         )
 
-        # writing to detection.avi
+        # writing to detection.mp4
         out.write(frame)
 
-        ### show detections as it happens
-        if show_detection:
-            cv.imshow(f"Detections for {source_path} as it happens", frame)
+        return save_detection_to
 
-            if cv.waitKey(1) == ord("q"):
-                show_detection = False
-                cv.destroyAllWindows()
-
-        capture.release()
-        out.release()
-        cv.destroyAllWindows()
+    capture.release()
+    out.release()
+    cv.destroyAllWindows()
