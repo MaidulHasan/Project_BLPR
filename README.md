@@ -1,6 +1,9 @@
 # Project_BLPR 
 In partial fulfillment of the requirements for the degree of Bachelor of Science in Mechanical Engineering.
 
+### Cite as: 
+**Hasan, Maidul (2023) Development of A Multi-Stage Deep Learning Pipeline for Automatic Bangla License Plate Recognition, [Source code] https://github.com/MaidulHasan/Project_BLPR/tree/main.**
+
 ---------------------------------
 ## Title of the Project
 ### Development of A Multi-Stage Deep Learning Pipeline for Automatic Bangla License Plate Recognition.
@@ -13,7 +16,7 @@ ALPR (Automatic License Plate Recognition) is an important application of comput
 -------------------------------
 ## Note
 
-**This repo contains the notebooks used to train the custom yolo-v8 models (along with the download links for the datasets used). Here we implemented and tested the developed BLPR system for image inputs (image.py) and pre-recorded video inputs (video.py) and made sure that the pipelines works without any issues. But we couldn't verify the pipeline developed for live video inputs (live_capture.py) as no good quality external video-capturing device was available at the time. But it should work seamlessly since it is essentially the same as the video.py pipeline.**
+This repo contains the notebooks used to train the custom yolo-v8 models (along with the download links for the datasets used). Here we implemented and tested the developed BLPR system for image inputs (image.py) and pre-recorded video inputs (video.py) and made sure that the pipelines works without any issues. But we couldn't verify the pipeline developed for live video inputs (live_capture.py) as no good quality external video-capturing device was available at the time. But it should work seamlessly since it is essentially the same as the video.py pipeline.
 
 --------------------------------------
 
