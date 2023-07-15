@@ -45,35 +45,31 @@ def blpr_live_capture(
     while True:
         ret, frame = capture.read()
 
-        if ret is False and save_detection_to:
-            return f"Detections saved to {save_detection_to}. Exiting..."
-
         if ret is False:
-            return "Could not read any frame. Stream may have ended. Exiting..."
+            print("Could not read any frame. Stream may have ended. Exiting...")
+            break
 
         blur_frame = cv.GaussianBlur(frame, (5, 5), 0)
         car_text = blp_text_extraction_pipeline(blur_frame)
 
-        if car_text is None or car_text.strip() == "":
-            car_text = ""
-
         ### save detection
         # drawing 'text' over the original frame
-        cv.putText(
-            frame,
-            car_text,
-            (20, 110),
-            cv.FONT_ITALIC,
-            fontScale=2,
-            color=(0, 0, 255),
-            thickness=2,
-        )
+        if car_text is not None and car_text.strip() != "":
+            cv.putText(
+                frame,
+                car_text,
+                (20, 110),
+                cv.FONT_ITALIC,
+                fontScale=2,
+                color=(0, 0, 255),
+                thickness=2,
+            )
 
         # writing to detection.mp4
         out.write(frame)
 
-        return save_detection_to
-
     capture.release()
     out.release()
     cv.destroyAllWindows()
+
+    return save_detection_to
