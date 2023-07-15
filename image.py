@@ -29,7 +29,7 @@ def blpr_image(source_path, save_detection=True, save_path=f"{HOME}/inferences")
     """
 
     source_img = cv.imread(source_path)
-    frame = source_img.copy()
+    frame = cv.resize(source_img.copy(), (640, 640))
     blur_img = cv.GaussianBlur(source_img, (5, 5), 0)
     car_text = blp_text_extraction_pipeline(blur_img)
 
@@ -41,14 +41,15 @@ def blpr_image(source_path, save_detection=True, save_path=f"{HOME}/inferences")
     ### save detection
     if save_detection:
         # drawing 'text' over the original frame
+
         cv.putText(
             frame,
             car_text,
-            (20, 110),
+            (10, 80),
             cv.FONT_ITALIC,
-            fontScale=3,
+            fontScale=1,
             color=(0, 0, 255),
-            thickness=3,
+            thickness=2,
         )
 
         # saving image
