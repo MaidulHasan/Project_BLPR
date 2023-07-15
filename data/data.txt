@@ -22,4 +22,4 @@ Project_BLPR/data/
 				  gdrive - https://drive.google.com/drive/folders/1Sy9eE4ZiH5ztTGVhF3Vnny4BmZgZE6OZ?usp=drive_link
 				
 					  
-	-> test_blpr_video.mp4	: purpose - test BLPR system for pre recorded video inputs
+	-> dhaka_traffic_test1.mp4 : purpose - test BLPR system for pre recorded video inputs
