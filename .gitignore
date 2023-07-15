@@ -3,16 +3,9 @@
 **/.ipynb_checkpoints/
 **/.virtual_documents/
 **/__pycache__/
-**/Ref**/
 **/*.sh
 **/*.code**
 **/.idea/
 **/.xdp**
-**/datasets-**
-**PDFs/**
-**/**.epub
-**/**Prev**
-**/**Tutorials**
-**/test**
 **/data/**.zip
 **/**.db
