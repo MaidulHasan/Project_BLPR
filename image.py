@@ -23,7 +23,7 @@ def blpr_image(source_path, save_detection=True, save_path=f"{HOME}/inferences")
     """
     source_path: pass the full path along with the image extension
     save_detection: by default True
-    save_path: folder to which the detection is to be saved, by default saved to "./Project_BLPR/inferences/" with filename = "{source_file_name} - {car_text}.png"
+    save_path: folder to which the detection is to be saved, by default saved to "./Project_BLPR/inferences/" with name = "blpr_image_detections-{source_file_name}_{car_text}.png"
 
     Returns: the extracted text from the car number plate
     """
@@ -53,7 +53,10 @@ def blpr_image(source_path, save_detection=True, save_path=f"{HOME}/inferences")
 
         # saving image
         source_file_name = os.path.splitext(os.path.basename(f"{source_path}"))[0]
-        cv.imwrite(f"{save_path}/{source_file_name} - {car_text}.png", frame)
+        cv.imwrite(
+            f"{save_path}/blpr_image_detections-{source_file_name}_{car_text}.png",
+            frame,
+        )
 
     ### return the extracted number plate
     return car_text
