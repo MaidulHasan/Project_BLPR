@@ -1,8 +1,8 @@
 # Project_BLPR 
 In partial fulfillment of the requirements for the degree of Bachelor of Science in Mechanical Engineering.
 
-### Cite as: 
-**Hasan, Maidul (2023) Development of A Multi-Stage Deep Learning Pipeline for Automatic Bangla License Plate Recognition, [Source code] https://github.com/MaidulHasan/Project_BLPR/tree/main.**
+### Cite as,
+**M. Hasan, “Development of A Multi-Stage Deep Learning Pipeline for Automatic Bangla License Plate Recognition.”, 2023 [Online]. Available: https://www.academia.edu/104789062/Development_of_A_Multi_Stage_Deep_Learning_Pipeline_for_Automatic_Bangla_License_Plate_Recognition [Source code]. Available: https://github.com/MaidulHasan/Project_BLPR/tree/main.**
 
 ---------------------------------
 ## Title of the Project
@@ -17,20 +17,6 @@ ALPR (Automatic License Plate Recognition) is an important application of comput
 ## Note
 
 This repo contains the notebooks used to train the custom yolo-v8 models (along with the download links for the datasets used). Here we implemented and tested the developed BLPR system for image inputs (image.py) and pre-recorded video inputs (video.py) and made sure that the pipelines works without any issues. But we couldn't verify the pipeline developed for live video inputs (live_capture.py) as no good quality external video-capturing device was available at the time. But it should work seamlessly since it is essentially the same as the video.py pipeline.
-
---------------------------------------
-
-## General Outline of the End-to-End BLPR pipeline
-
-![outline_of_methodology](https://github.com/MaidulHasan/Project_BLPR/assets/71931144/936b928e-cbab-4714-a33d-97cc861eb652)
-
-### Outline of the License Plate Bounding Box Detector Model**
-
-![outline_of_model_lp_bb_detector](https://github.com/MaidulHasan/Project_BLPR/assets/71931144/569a02ec-6094-4764-8d1e-b21e9e54eb43)
-
-### Outline of Bangla License Plate Text Extractor Model**
-
-![outline_of_model_blp_text_extractor](https://github.com/MaidulHasan/Project_BLPR/assets/71931144/f8dfccb1-de26-43ce-9947-cd615f836e59)
 
 ---------------------------------------
 ## References
